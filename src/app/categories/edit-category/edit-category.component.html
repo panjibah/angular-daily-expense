@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="categories-form">
+        <form #ngFormRef="ngForm" (ngSubmit)="onSubmit(ngFormRef)">
+            <div class="row">
+                <div class="categories-form__input col">
+<!--                    <label for="name" class="form-label">{{type | titlecase}} Categories</label>-->
+                    <input type="text" class="form-control" id="name" ngModel name="name" required>
+                </div>
+                <div class="categories-form__button col ">
+                    <button class="btn btn-primary" type="submit">Button</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
