@@ -37,6 +37,20 @@ export class PostService {
       observe: 'events'
     })
   }
+
+  deleteSinglePosts(postData: AppModel){
+    const updateFormatted = {
+      [postData.id]:{
+        'date' : postData.date, 
+        'category' :postData.category, 
+        'amount' :postData.amount, 
+        'description': postData.description,
+        'isDeleted': true,
+        'type': postData.type
+      }
+    }
+    return this.http.patch(this.postURL, updateFormatted);
+  }
   
   fetchHistory(){
 
@@ -44,8 +58,26 @@ export class PostService {
     .pipe(
       map(responseData =>{
         const postArray: AppModel[] = [];
+        //console.log("responseData ADALAH "+ responseData);
         for(const key in responseData){
+         // console.log("responseData KEY ADALAH "+ key);
           if(responseData.hasOwnProperty(key)){
+            postArray.push({...responseData[key],id: key})
+          }
+        }
+        return postArray;
+      })
+    )
+  }
+
+  fetchSingleValue(idSearched: string){
+
+    return this.http.get<{[key: string]: AppModel}>(this.postURL)
+    .pipe(
+      map(responseData =>{
+        const postArray: AppModel[] = [];
+        for(const key in responseData){
+          if(responseData.hasOwnProperty(key) && key === idSearched){
             postArray.push({...responseData[key],id: key})
           }
         }
