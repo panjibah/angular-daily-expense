@@ -5,14 +5,18 @@ import {HomeComponent} from './home/home.component';
 import {HistoryComponent} from './history/history.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {EditCategoryComponent} from './categories/edit-category/edit-category.component';
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'income', component: HomeComponent},
+    {path: 'income', canActivate: [AuthGuard] , component: HomeComponent},
     {path: 'expenses', component: HomeComponent},
     {path: 'history', component: HistoryComponent},
+    {path: 'login', component: LoginComponent},
+
     {
-        path: 'categories', component: CategoriesComponent, children: [
+        path: 'categories',canActivate: [AuthGuard], component: CategoriesComponent, children: [
             {path: ':name', component: EditCategoryComponent}
         ]
     },

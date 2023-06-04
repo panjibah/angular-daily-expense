@@ -10,7 +10,13 @@ import {CategoriesComponent} from './categories/categories.component';
 import {EditCategoryComponent} from './categories/edit-category/edit-category.component';
 import {CategoryComponent} from './categories/category/category.component';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import {AuthInterceptor} from './auth.interceptor';
+import {CategoriesService} from './categories/categories.service';
+import {AuthService} from './auth.service';
 
 
 @NgModule({
@@ -21,7 +27,9 @@ import {HttpClientModule} from '@angular/common/http';
     PageNotFoundComponent,
     CategoriesComponent,
       EditCategoryComponent,
-      CategoryComponent
+      CategoryComponent,
+      LoginComponent,
+      LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +38,10 @@ import {HttpClientModule} from '@angular/common/http';
       HttpClientModule
 
   ],
-  providers: [],
+  providers: [CategoriesService, AuthService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass : AuthInterceptor,
+    multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

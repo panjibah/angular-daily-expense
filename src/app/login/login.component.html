@@ -1,0 +1,19 @@
+
+<main class="form-signin">
+    <form  (ngSubmit)="onSubmit(ngFormRef)" #ngFormRef="ngForm">
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" name="email" ngModel >
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" ngModel>
+            <label for="floatingPassword">Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+            {{ isLoginMode ? 'Login' : 'Sign Up' }}
+        </button>
+    </form>
+    <button class="w-100 btn btn-lg btn-primary" type="button" (click)="onSwitchMode()">
+        Switch to {{ isLoginMode ? 'Sign Up' : 'Login'}}
+    </button>
+</main>
