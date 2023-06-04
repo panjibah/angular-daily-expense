@@ -1,1 +1,39 @@
-<p>history works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <button class="btn btn-primary" (click)="addNewIncome()">
+                Add Income
+              </button> &nbsp;
+            <button class="btn btn-primary" (click)="addNewExpense()">
+                Add expense
+              </button> &nbsp;
+            <button class="btn btn-danger" [disabled]="loadedPosts.length < 1" (click)="clearHistory()">
+                Clear All History
+              </button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <p *ngIf="loadedPosts.length<1">No posts available!</p>
+            <table class="table">
+                <tbody *ngIf="loadedPosts.length>=1">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                    <tr *ngFor="let post of sortData; let i = index" [ngClass]="{'table-danger': post.type==='expense', 'table-success': post.type==='income'}">
+                        <td> {{i+1}}</td>
+                        <td>{{post.category}}</td>
+                        <td>{{post.amount| number}}</td>
+                        <td>{{post.date}}</td>
+                        <td>{{post.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
