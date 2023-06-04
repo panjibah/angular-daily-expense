@@ -18,7 +18,7 @@
             </thead>
             <p *ngIf="loadedPostIncome.length<1">No Income available!</p>
                 <tbody *ngIf="loadedPostIncome.length>=1">               
-                    <tr *ngFor="let post of sortIncomeData; let i = index" (click)="updateData(post)">
+                    <tr *ngFor="let post of sortIncomeData; let i = index">
                         <td> {{i+1}}</td>
                         <td>{{post.category}}</td>
                         <td>{{post.amount| number}}</td>

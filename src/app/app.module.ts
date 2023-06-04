@@ -20,6 +20,22 @@ import { ExpenseComponent } from './expense/expense.component';
 import { IncomeComponent } from './income/income.component';
 
 
+const appRoutes: Routes= [
+  {path: '', component:HomeComponent},
+  {path: 'income', component:IncomeComponent},
+  {path: 'expenses', component:ExpenseComponent},
+  {
+    path: 'categories', component: CategoriesComponent, children: [
+        {path: ':name', component: EditCategoryComponent}
+    ]
+},
+  {path: 'history', component:HistoryComponent},
+  {path: 'report', component:HomeComponent},
+
+  {path: 'not-found', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/not-found'}
+];
+
 
 @NgModule({
   declarations: [
@@ -34,14 +50,14 @@ import { IncomeComponent } from './income/income.component';
       LogoutComponent,
     IncomeComponent,
     ExpenseComponent,
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
-      AppRoutingModule
+    AppRoutingModule
   ],
 
   providers: [CategoriesService, AuthService, {
