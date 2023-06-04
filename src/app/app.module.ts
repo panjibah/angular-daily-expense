@@ -35,6 +35,8 @@ const appRoutes: Routes= [
     HistoryComponent,
     HomeComponent,
     PageNotFoundComponent,
+    CategoriesComponent,
+    EditCategoryComponent,
     IncomeComponent,
     ExpenseComponent,
   ],
