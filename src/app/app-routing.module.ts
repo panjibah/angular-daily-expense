@@ -7,8 +7,13 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {EditCategoryComponent} from './categories/edit-category/edit-category.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
+import {ExpenseComponent} from './expense/expense.component';
+import {IncomeComponent} from './income/income.component';
 
 const routes: Routes = [
+    {path: '', component: HomeComponent},
+    {path: 'income', component: IncomeComponent},
+    {path: 'expenses', component: ExpenseComponent},
     {path: '', component: HomeComponent},
     {path: 'income', canActivate: [AuthGuard] , component: HomeComponent},
     {path: 'expenses', component: HomeComponent},

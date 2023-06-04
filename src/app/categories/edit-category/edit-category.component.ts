@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Category} from '../category.model';
 import {ActivatedRoute} from '@angular/router';
@@ -12,6 +12,8 @@ import {CategoriesService} from '../categories.service';
 export class EditCategoryComponent implements OnInit {
     categoryName: any = 'dsd';
     @Input() type ='';
+     @ViewChild('ngFormRef') form?: NgForm;
+
 
     loadedCategory = [];
     categoryType = '';

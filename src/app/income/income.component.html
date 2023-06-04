@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <h2> Income Management </h2>
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <!-- <form #incomeForm="ngForm" (ngSubmit)="onCreateIncome(incomeForm.value)"> -->
+            <form [formGroup]=incomeForm (ngSubmit)="onCreateIncome()">
+                <div class="form-group">
+                    <label for="date">Income Date</label>
+                    <input type="date" class="form-control" id="date" required formControlName="date" />
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <!-- <input type="text" class="form-control" id="category" required formControlName="category" /> -->
+                    <select class="form-control" formControlName="category">
+                        <option value="">Click Here to Select Income Category</option>
+                        <option *ngFor="let categories of categoryList">
+                            {{ categories.name }}
+                          </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="category">Amount</label>
+                    <input type="text" class="form-control" id="amount" required formControlName="amount" />
+                </div>
+                <div class="form-group">
+                    <label for="category">Description</label>
+                    <textarea class="form-control" id="description" required formControlName="description"></textarea>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="submit">
+                        Add Income
+                    </button> &nbsp;
+                <button class="btn btn-primary" (click)="onBack()">
+                        Back
+                    </button>
+            </form>
+            <!-- </form> -->
+        </div>
+    </div>
+</div>
