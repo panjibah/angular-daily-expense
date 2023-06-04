@@ -12,6 +12,8 @@ import {CategoriesService} from '../categories.service';
 export class EditCategoryComponent implements OnInit {
     categoryName: any = 'dsd';
     @Input() type ='';
+     @ViewChild('ngFormRef') form?: NgForm;
+
 
     loadedCategory = [];
     categoryType = '';
