@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="category">Amount</label>
-                    <input type="text" class="form-control" id="amount" formControlName="amount" />
+                    <input type="text" class="form-control" id="amount" formControlName="amount" (keypress)="numberOnly($event)"/>
                     <span *ngIf="!incomeForm.get('amount')!.valid && incomeForm.get('amount')!.touched" style="color: crimson;">
                         Amount value is Mandatory
                     </span>
@@ -39,7 +39,7 @@
                     </span>
                 </div>
                 <br>
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary" type="submit" [disabled]="!incomeForm.valid">
                         Add Income
                     </button> &nbsp;
                 <button class="btn btn-primary" (click)="onBack()">

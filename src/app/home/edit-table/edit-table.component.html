@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="category">{{this.editForm.get('type').value | titlecase}} Amount</label>
-                    <input type="text" class="form-control" id="amount" formControlName="amount" />
+                    <input type="text" class="form-control" id="amount" formControlName="amount" (keypress)="numberOnly($event)"/>
                     <span *ngIf="!editForm.get('amount')!.valid && editForm.get('amount')!.touched" style="color: crimson;">
                         Amount value is Mandatory
                     </span>

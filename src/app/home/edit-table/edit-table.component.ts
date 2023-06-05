@@ -61,7 +61,7 @@ export class EditTableComponent implements OnInit {
 
   onUpdateTransaction(){
     let postData: AppModel = {date: this.editForm.controls['date'].value, category: this.editForm.controls['category'].value, 
-    amount: this.editForm.controls['amount'].value, description: this.editForm.controls['description'].value, type: 'expense', id:this.editForm.controls['id'].value };
+    amount: this.editForm.controls['amount'].value, description: this.editForm.controls['description'].value, type: this.editForm.controls['type'].value, id:this.editForm.controls['id'].value };
     this.postService.onUpdateData(postData).subscribe(
       (data)=> {
         console.log(data);
@@ -102,6 +102,15 @@ export class EditTableComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
 
 }

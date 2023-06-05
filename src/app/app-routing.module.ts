@@ -13,14 +13,13 @@ import { EditTableComponent } from './home/edit-table/edit-table.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'income', component: IncomeComponent},
-    {path: 'expenses', component: ExpenseComponent},
-    {path: '', component: HomeComponent},
-    {path: 'income', canActivate: [AuthGuard] , component: HomeComponent},
-    {path: 'expenses', component: HomeComponent},
+    {path: 'income',  canActivate: [AuthGuard] ,component: IncomeComponent},
+    {path: 'expenses',  canActivate: [AuthGuard] ,component: ExpenseComponent},
+    {path: 'income',  component: IncomeComponent},
+    {path: 'expenses',  component: ExpenseComponent},
     {path: 'history', component: HistoryComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'edit/:id', component: EditTableComponent},
+    {path: 'edit/:id', canActivate: [AuthGuard] ,component: EditTableComponent},
 
     {
         path: 'categories',canActivate: [AuthGuard], component: CategoriesComponent, children: [
