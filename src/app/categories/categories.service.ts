@@ -49,13 +49,7 @@ export class CategoriesService {
     }
 
     onCreatePost(category: { name?: string, type?: string }) {
-        this.http.post(this.postURL, category).subscribe(
-            (data) => {
-                console.log(data);
-            }, error => {
-                this.errorHandling.next(error);
-            }
-        );
+        return this.http.post(this.postURL, category);
     }
 
     fetchCategories() {

@@ -39,7 +39,13 @@ export class EditCategoryComponent implements OnInit {
 
         cat.type = this.type;
         cat.name = elementRef.value.name;
-        this.categoryService.onCreatePost(cat);
+        this.categoryService.onCreatePost(cat).subscribe(
+            (response) =>{
+                console.log(response);
+
+            }
+        );
+
     }
 
 }

@@ -12,14 +12,13 @@ import {IncomeComponent} from './income/income.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'income', component: IncomeComponent},
+    {path: 'income', canActivate: [AuthGuard], component: IncomeComponent},
     {path: 'expenses', component: ExpenseComponent},
     {path: '', component: HomeComponent},
     {path: 'income', canActivate: [AuthGuard] , component: HomeComponent},
     {path: 'expenses', component: HomeComponent},
     {path: 'history', component: HistoryComponent},
     {path: 'login', component: LoginComponent},
-
     {
         path: 'categories',canActivate: [AuthGuard], component: CategoriesComponent, children: [
             {path: ':name', component: EditCategoryComponent}
