@@ -6,20 +6,25 @@
             <h3> List of Income</h3>
             <div class="spinner-border" style="width: 6rem; height: 6rem;" role="status" *ngIf="isReportLoading"></div>
             <table class="table table-striped">
-            <thead class="thead-income">
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <p *ngIf="loadedPostIncome.length<1">No Income available!</p>
-                <tbody *ngIf="loadedPostIncome.length>=1">               
+                <thead class="thead-income">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <p *ngIf="loadedPostIncome.length<1">No Income available!</p>
+                <tbody *ngIf="loadedPostIncome.length>=1">
                     <tr *ngFor="let post of sortIncomeData; let i = index">
-                        <td> {{i+1}}</td>
+                        <!-- <td> {{i+1}}</td> -->
+                        <td>
+                            <a [routerLink]="" (click)="goEdit(post.id)">
+                                {{ i+1 }}
+                            </a>
+                        </td>
                         <td>{{post.category}}</td>
                         <td>{{post.amount| number}}</td>
                         <td>{{post.date}}</td>
@@ -27,7 +32,11 @@
                         <td><button type="button" class="btn-close" aria-label="Close" (click)="deleteData(post)"></button></td>
                     </tr>
                 </tbody>
-                <tfoot class="tfoot-income"><tr><td colspan="6"><b>Total Income : </b>{{totalIncome | number}}</td></tr></tfoot>
+                <tfoot class="tfoot-income">
+                    <tr>
+                        <td colspan="6"><b>Total Income : </b>{{totalIncome | number}}</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -51,7 +60,11 @@
                 <p *ngIf="loadedPostExpense.length<1">No Expense for now!</p>
                 <tbody *ngIf="loadedPostExpense.length>=1">
                     <tr *ngFor="let post of sortExpenseData; let i = index">
-                        <td> {{i+1}}</td>
+                        <td>
+                            <a [routerLink]="" (click)="goEdit(post.id)">
+                                {{ i+1 }}
+                            </a>
+                        </td>
                         <td>{{post.category}}</td>
                         <td>{{post.amount| number}}</td>
                         <td>{{post.date}}</td>
@@ -60,7 +73,9 @@
                     </tr>
                 </tbody>
                 <tfoot class="tfoot-expense">
-                    <tr><td colspan="6"><b>Total Expense : </b>{{totalExpense | number}}</td></tr>
+                    <tr>
+                        <td colspan="6"><b>Total Expense : </b>{{totalExpense | number}}</td>
+                    </tr>
                 </tfoot>
             </table>
         </div>

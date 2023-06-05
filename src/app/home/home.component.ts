@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../post.service';
 import { AppModel } from '../app.model';
 
@@ -10,7 +10,7 @@ import { AppModel } from '../app.model';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private postService: PostService) { }
+  constructor(private router: Router, private postService: PostService, private route:ActivatedRoute) { }
   loadedPostIncome = [];
   loadedPostExpense = [];
   totalExpense = 0;
@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit {
       []
     )
   }
+
+  goEdit(id:string){
+    this.router.navigate(['edit',id]);
+  }
+
   fetchPost(){
     this.postService.fetchHistory().subscribe(
       posts => {

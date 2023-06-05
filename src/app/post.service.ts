@@ -51,6 +51,20 @@ export class PostService {
     }
     return this.http.patch(this.postURL, updateFormatted);
   }
+
+  onUpdateData(postData: AppModel){
+    //this.postURL += this.endPointURL + 'ListOfData/Income.json';
+    console.log("ABCDEFG");
+    console.log(postData);
+    const updateFormatted = {
+      [postData.id]:{
+        'date' : postData.date, 'category' :postData.category, 'amount' :postData.amount, 'description' :postData.description, 'isDeleted': false, 'type': postData.type
+      }
+    }
+    
+    return this.http.patch(this.postURL, updateFormatted);
+    
+  }
   
   fetchHistory(){
 

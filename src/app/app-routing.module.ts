@@ -9,6 +9,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
 import {ExpenseComponent} from './expense/expense.component';
 import {IncomeComponent} from './income/income.component';
+import { EditTableComponent } from './home/edit-table/edit-table.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'expenses', component: HomeComponent},
     {path: 'history', component: HistoryComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'edit/:id', component: EditTableComponent},
 
     {
         path: 'categories',canActivate: [AuthGuard], component: CategoriesComponent, children: [
