@@ -1,0 +1,6 @@
+.thead-income, .tfoot-income {
+    background-color: #ccfccc;
+}
+.thead-expense, .tfoot-expense {
+    background-color: #fccccc;
+}

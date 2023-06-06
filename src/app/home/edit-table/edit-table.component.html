@@ -1,46 +1,45 @@
 <div class="container">
     <div class="row">
-        <h2> Expense Management </h2>
+
         <div class="col-xs-12 col-md-6 col-md-offset-3">
             <!-- <form #incomeForm="ngForm" (ngSubmit)="onCreateExpense(incomeForm.value)"> -->
-            <form [formGroup]=expenseForm (ngSubmit)="onCreateExpense()">
+            <form [formGroup]="editForm" (ngSubmit)="onUpdateTransaction()">
+                <h2>Edit {{this.editForm.get('type').value | titlecase}} </h2>
                 <div class="form-group">
-                    <label for="date">Expense Date</label>
+                    <label for="date">{{this.editForm.get('type').value | titlecase}} Date</label>
                     <input type="date" class="form-control" id="date" formControlName="date" />
-                    <span *ngIf="!expenseForm.get('date')!.valid && expenseForm.get('date')!.touched" style="color: crimson;">
+                    <span *ngIf="!editForm.get('date')!.valid && editForm.get('date')!.touched" style="color: crimson;">
                           Date is Mandatory
                     </span>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <!-- <input type="text" class="form-control" id="category" required formControlName="category" /> -->
                     <select class="form-control" formControlName="category">
-                        <option value="">Click Here to Select Expense Category</option>
-                        <option *ngFor="let categories of categoryList">
+                        <option *ngFor="let categories of categoryList" [selected]="categories.name===this.editForm.get('category').value">
                             {{ categories.name }}
                           </option>
                     </select>
-                    <span *ngIf="!expenseForm.get('category')!.valid && expenseForm.get('category')!.touched" style="color: crimson;">
+                    <span *ngIf="!editForm.get('category')!.valid && editForm.get('category')!.touched" style="color: crimson;">
                         Categories is Mandatory
                   </span>
                 </div>
                 <div class="form-group">
-                    <label for="category">Expense Amount</label>
-                    <input type="text" class="form-control" id="amount" formControlName="amount" (keypress)="numberOnly($event)" />
-                    <span *ngIf="!expenseForm.get('amount')!.valid && expenseForm.get('amount')!.touched" style="color: crimson;">
+                    <label for="category">{{this.editForm.get('type').value | titlecase}} Amount</label>
+                    <input type="text" class="form-control" id="amount" formControlName="amount" (keypress)="numberOnly($event)"/>
+                    <span *ngIf="!editForm.get('amount')!.valid && editForm.get('amount')!.touched" style="color: crimson;">
                         Amount value is Mandatory
                     </span>
                 </div>
                 <div class="form-group">
                     <label for="category">Description</label>
                     <textarea class="form-control" id="description" formControlName="description"></textarea>
-                    <span *ngIf="!expenseForm.get('description')!.valid && expenseForm.get('description')!.touched" style="color: crimson;">
+                    <span *ngIf="!editForm.get('description')!.valid && editForm.get('description')!.touched" style="color: crimson;">
                         Description is Mandatory
                     </span>
                 </div>
                 <br>
-                <button class="btn btn-primary" type="submit" [disabled]="!expenseForm.valid">
-                    Add Expense
+                <button class="btn btn-primary" type="submit">
+                    Update {{this.editForm.get('type').value | titlecase}}
                 </button>&nbsp;
                 <button class="btn btn-primary" (click)="onBack()">
                     Back

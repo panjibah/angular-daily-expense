@@ -31,7 +31,7 @@ export class ExpenseComponent implements OnInit {
     this.postService.onCreateData(postData).subscribe(
       (data)=> {
         console.log(data);
-        //this.fetchPosts();
+        this.onBack();
       }
     );    
   }
@@ -54,6 +54,15 @@ export class ExpenseComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
 
 }
