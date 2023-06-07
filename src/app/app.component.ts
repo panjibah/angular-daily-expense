@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
               this.userName = user.email;
           }
 
-          console.log('logged IN' + this.loggedin);
+          //console.log('logged IN' + this.loggedin);
         }
     );
 

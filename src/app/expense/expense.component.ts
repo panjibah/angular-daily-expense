@@ -30,7 +30,7 @@ export class ExpenseComponent implements OnInit {
     amount: this.expenseForm.controls['amount'].value, description: this.expenseForm.controls['description'].value, type: 'expense'};
     this.postService.onCreateData(postData).subscribe(
       (data)=> {
-        console.log(data);
+        //console.log(data);
         this.onBack();
       }
     );    
@@ -48,8 +48,8 @@ export class ExpenseComponent implements OnInit {
           if(item.type==='expense') this.categoryList.push({'name' : item.name});
         });
         //this.categoryList = posts;
-        console.log(posts);
-        console.log('HASIL PUSH FOREACH : '+this.categoryList);
+        //console.log(posts);
+       // console.log('HASIL PUSH FOREACH : '+this.categoryList);
       }, error => { //ini macam catch nya
         console.log(error);
       }

@@ -16,7 +16,7 @@ export class HistoryComponent implements OnInit {
     this.postService.fetchHistory().subscribe(
       posts => {
         this.loadedPosts = posts;
-        console.log(posts);
+        //console.log(posts);
       }, error => { //ini macam catch nya
         console.log(error);
       }
@@ -43,7 +43,7 @@ export class HistoryComponent implements OnInit {
     .subscribe(
       posts => {
         this.loadedPosts = posts;
-        console.log(posts);
+        //console.log(posts);
       }, error => { //ini macam catch nya
         console.log(error);
       }

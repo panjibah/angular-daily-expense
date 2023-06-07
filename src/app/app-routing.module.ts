@@ -14,7 +14,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {IsSignInGuard} from './guard/is-sign-in.guard';
 
 const routes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '',canActivate: [AuthGuard], component: HomeComponent},
     {path: 'logout', component: LogoutComponent},
     {path: 'income',  canActivate: [AuthGuard] ,component: IncomeComponent},
     {path: 'expenses',  canActivate: [AuthGuard] ,component: ExpenseComponent},

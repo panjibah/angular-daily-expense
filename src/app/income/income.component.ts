@@ -30,7 +30,7 @@ export class IncomeComponent implements OnInit {
       amount: this.incomeForm.controls['amount'].value, description: this.incomeForm.controls['description'].value, type: 'income'};
     this.postService.onCreateData(postData).subscribe(
       (data)=> {
-        console.log(data);
+        //console.log(data);
         this.onBack();
       }
     );    
@@ -48,8 +48,8 @@ export class IncomeComponent implements OnInit {
           if(item.type==='income') this.categoryList.push({'name' : item.name});
         });
         //this.categoryList = posts;
-        console.log(posts);
-        console.log('HASIL PUSH FOREACH : '+this.categoryList);
+        //console.log(posts);
+        //console.log('HASIL PUSH FOREACH : '+this.categoryList);
       }, error => { //ini macam catch nya
         console.log(error);
       }

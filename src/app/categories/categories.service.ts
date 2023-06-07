@@ -90,23 +90,7 @@ export class CategoriesService {
                 return postArray.filter(data => data.type === type);
             })
         );
-        // )
-        //   return this.http.get<{[key: string]: Category}>(this.postURL, {
-        //       headers: new  HttpHeaders({
-        //           'custom-header': 'header category'
-        //       }),
-        //       responseType: 'json'
-        //   }).pipe(
-        //       map( responseData => {
-        //           const postArray = [];
-        //           for (const key in responseData){
-        //               if (responseData.hasOwnProperty(key)){
-        //                   postArray.push({...responseData[key], id: key});
-        //               }
-        //           }
-        //           return postArray.filter(data => data.type === type );
-        //       })
-        //   );
+
     }
 
     private log(fetchedHeroes: string) {

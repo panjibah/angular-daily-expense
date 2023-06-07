@@ -24,7 +24,7 @@ constructor( private authService: AuthService, private router: Router) { }
 
     onSwitchMode(){
         this.isLoginMode = !this.isLoginMode;
-        console.log(this.isLoginMode);
+        //console.log(this.isLoginMode);
     }
   onSubmit(elementRef: NgForm){
 
@@ -36,15 +36,6 @@ constructor( private authService: AuthService, private router: Router) { }
       returnSecureToken : true
     };
 
-  // this.authService.signUp(authRequestData).subscribe(
-      //   //       response => {
-      //   //         console.log(response);
-      //   //       }, error => {
-      //   //         console.log(error);
-      //   //       }
-      //   //   );
-
-  // ------
 
       let authObservable: Observable<AuthResponseData>;
       if(this.isLoginMode){
@@ -54,7 +45,7 @@ constructor( private authService: AuthService, private router: Router) { }
       }
   authObservable.subscribe(
           resdata => {
-              console.log(resdata);
+              //console.log(resdata);
              // this.isLoading = false;
               this.router.navigate(['/income']);
              //  this.router.navigate(['/income'])

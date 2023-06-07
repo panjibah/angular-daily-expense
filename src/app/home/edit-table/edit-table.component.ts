@@ -17,11 +17,11 @@ export class EditTableComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(
       (params: Params) => {
-        console.log("WAWAWAWAWA " + params['id']);
+        //console.log("WAWAWAWAWA " + params['id']);
         this.id = params['id'];
       }
     );
-    console.log("0000");
+    //console.log("0000");
     this.editForm = new FormGroup({
       'date':new FormControl(null, [Validators.required]), 
       'category':new FormControl(null, [Validators.required]),
@@ -30,25 +30,25 @@ export class EditTableComponent implements OnInit {
       'type'  : new FormControl(null),
       'id'  : new FormControl(null),
     });
-      console.log("ABCD");
+      //console.log("ABCD");
     this.postService.fetchSingleValue(this.id).subscribe(
       posts => {
-        console.log("EFGH");
+        //console.log("EFGH");
         posts.forEach(item => {
-        console.log("IJKLM");
+        //console.log("IJKLM");
         this.editForm.patchValue({'date':item.date, 
           'amount':item.amount,
           'description':item.description,  
           'type'  : item.type,
           'category' : item.category,
           'id' : item.id });
-          console.log("NOPQ");  
+          //console.log("NOPQ");
           
           this.fetchComponentList(item.type);
         })
         
         
-        console.log(posts);
+        //console.log(posts);
       }, error => { //ini macam catch nya
         console.log(error);
       }
@@ -64,7 +64,7 @@ export class EditTableComponent implements OnInit {
     amount: this.editForm.controls['amount'].value, description: this.editForm.controls['description'].value, type: this.editForm.controls['type'].value, id:this.editForm.controls['id'].value };
     this.postService.onUpdateData(postData).subscribe(
       (data)=> {
-        console.log(data);
+        //console.log(data);
         //this.fetchPosts();
         this.onBack();
       }
