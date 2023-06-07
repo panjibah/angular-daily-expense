@@ -56,7 +56,11 @@ constructor( private authService: AuthService, private router: Router) { }
           resdata => {
               console.log(resdata);
              // this.isLoading = false;
-              this.router.navigate(['/income']);
+             //  this.router.navigate(['/income']);
+              this.router.navigate(['/income'])
+                  .then(() => {
+                      window.location.reload();
+                  });
           },
           errorMsg => {
               console.log(errorMsg);

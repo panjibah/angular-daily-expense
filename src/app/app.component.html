@@ -27,7 +27,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="navbar__right">
+                    <div class="navbar__right" *ngIf="loggedin">
                         <div class="row">
                             <div class="col-sm">
                                 <p> Welcome, {{userName}}</p>
