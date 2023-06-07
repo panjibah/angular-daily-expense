@@ -1,59 +1,64 @@
 
 <div class="container">
-    <h1 class="income_title">Income Categories</h1>
+
+    <h2 class="income_title">Income Categories</h2>
     <div class="component__wrapper">
     <app-edit-category [type] = 'incomeInput' ></app-edit-category>
     </div>
     <div class="income-categories__loading spinner-border" style="width: 6rem; height: 6rem;" role="status" *ngIf="isIncomeCategoryLoading"></div>
     <p *ngIf="isIncomeCategoryLoading">Loading ...</p>
-    <p *ngIf="incomeCategory.length < 1 && isIncomeCategoryLoading">No category available!</p>
     <div class="income-categories" *ngIf="incomeCategory.length >=1 && !isIncomeCategoryLoading">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
+                <p *ngIf="incomeCategory.length<1">No posts available!</p>
+                <table class="table">
+                    <tbody *ngIf="incomeCategory.length>=1">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Category Name</th>
 
-        <table class="table table__category">
-            <thead>
-            <tr>
-                <th scope="col" class="table__column-number">No.</th>
-                <th scope="col" class="table__column-category">Category Name</th>
+                    </tr>
+                    <tr *ngFor="let cat of incomeCategory;let i= index">
+                        <td> {{i+1}}</td>
+                        <td>{{cat.name}}</td>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let cat of incomeCategory;let i= index">
-                <th scope="row">{{i+1}}</th>
-                <td>{{cat.name}}</td>
-
-            </tr>
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="separator"></div>
-    <h1 class="expense_title">Expense Categories</h1>
+    <hr>
+    <h2 class="expense_title">Expense Categories</h2>
     <div class="income-categories__loading spinner-border" style="width: 6rem; height: 6rem;" role="status" *ngIf="isExpenseCategoryLoading"></div>
     <div class="component__wrapper">
     <app-edit-category [type] = 'expenseInput'></app-edit-category>
     </div>
     <p *ngIf="isExpenseCategoryLoading">Loading ...</p>
-    <p *ngIf="expenseCategory.length < 1 && isExpenseCategoryLoading">No category available!</p>
+
     <div class="income-categories" *ngIf="expenseCategory.length >=1 && !isExpenseCategoryLoading">
     <div class="expense-categories">
 
-        <table class="table table__category" >
-            <thead>
-            <tr>
-                <th scope="col" class="table__column-number">No.</th>
-                <th scope="col" class="table__column-category">Category Name</th>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3">
+                <p *ngIf="expenseCategory.length<1">No posts available!</p>
+                <table class="table">
+                    <tbody *ngIf="expenseCategory.length>=1">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Category Name</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let cat of expenseCategory; let i= index">
-                <th scope="row">{{i+1}}</th>
-                <td>{{cat.name}}</td>
+                    </tr>
+                    <tr *ngFor="let cat of expenseCategory;let i= index">
+                        <td> {{i+1}}</td>
+                        <td>{{cat.name}}</td>
 
-            </tr>
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+
 
 </div>
 <!--<router-outlet></router-outlet>-->

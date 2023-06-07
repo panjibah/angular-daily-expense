@@ -40,10 +40,18 @@ export class EditCategoryComponent implements OnInit {
         cat.type = this.type;
         cat.name = elementRef.value.name;
         this.categoryService.onCreatePost(cat).subscribe(
-            (response) =>{
-                console.log(response);
+            {
+                next(response) {
 
+                },
+                error(err) {
+                    console.error('something wrong occurred: ' + err);
+                },
+                complete() {
+                    window.location.reload();
+                },
             }
+
         );
 
     }

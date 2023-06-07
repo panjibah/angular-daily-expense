@@ -21,7 +21,10 @@ export class AppComponent implements OnInit{
     this.authService.userSubject.subscribe(
         user => {
           this.loggedin = !!user;
-          this.userName = user.email;
+          if(user){
+              this.userName = user.email;
+          }
+
           console.log('logged IN' + this.loggedin);
         }
     );

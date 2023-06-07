@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   error: string = null;
 
 constructor( private authService: AuthService, private router: Router) { }
-
+    errorMessage= '';
   ngOnInit(): void {
   }
 
@@ -56,15 +56,13 @@ constructor( private authService: AuthService, private router: Router) { }
           resdata => {
               console.log(resdata);
              // this.isLoading = false;
-             //  this.router.navigate(['/income']);
-              this.router.navigate(['/income'])
-                  .then(() => {
-                      window.location.reload();
-                  });
+              this.router.navigate(['/income']);
+             //  this.router.navigate(['/income'])
+
           },
           errorMsg => {
-              console.log(errorMsg);
-              this.error = errorMsg;
+              // console.log(errorMsg);
+              this.errorMessage = errorMsg;
              // this.isLoading = false;
           }
       );

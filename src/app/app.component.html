@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <nav class="navbar navbar-expand-lg bg-light">
-                <div class="container-fluid">
+                <div class="container-fluid ms-3">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="loggedin">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -22,9 +22,6 @@
                                 <a class="nav-link" routerLinkActive="active" routerLink="/categories">Categories</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/report">Report</a>
-                            </li>
                         </ul>
                     </div>
                     <div class="navbar__right" *ngIf="loggedin">
