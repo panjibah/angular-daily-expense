@@ -21,26 +21,7 @@ import { IncomeComponent } from './income/income.component';
 import { EditTableComponent } from './home/edit-table/edit-table.component';
 
 
-const appRoutes: Routes= [
-  {path: '', component:HomeComponent},
-  // {path: '', redirectTo: '/home', pathMatch: 'full'},
-  // {path: 'home', component:HomeComponent, children: [
-    // {path: 'edit', component: EditTableComponent},
-  // ]},
-  {path: 'edit', component: EditTableComponent},
-  {path: 'income', component:IncomeComponent},
-  {path: 'expenses', component:ExpenseComponent},
-  {
-    path: 'categories', component: CategoriesComponent, children: [
-        {path: ':name', component: EditCategoryComponent}
-    ]
-},
-  {path: 'history', component:HistoryComponent},
-  {path: 'report', component:HomeComponent},
 
-  {path: 'not-found', component: PageNotFoundComponent},
-  {path: '**', redirectTo: '/not-found'}
-];
 
 
 @NgModule({
@@ -62,7 +43,6 @@ const appRoutes: Routes= [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     AppRoutingModule
   ],

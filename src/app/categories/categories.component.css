@@ -1,0 +1,26 @@
+.table__column-category{
+    width: 00px;
+}
+
+.table__column-number{
+    width: 20px;
+}
+.table__category{
+    width: 500px;
+}
+.separator{
+    margin-top: 50px;
+}
+.expense_title{
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+
+.income_title{
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+.component__wrapper{
+    margin-bottom: 30px;
+}
+

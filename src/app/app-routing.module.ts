@@ -10,15 +10,19 @@ import {AuthGuard} from './auth.guard';
 import {ExpenseComponent} from './expense/expense.component';
 import {IncomeComponent} from './income/income.component';
 import { EditTableComponent } from './home/edit-table/edit-table.component';
+import {LogoutComponent} from './logout/logout.component';
+import {IsSignInGuard} from './guard/is-sign-in.guard';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
+    {path: 'logout', component: LogoutComponent},
     {path: 'income',  canActivate: [AuthGuard] ,component: IncomeComponent},
     {path: 'expenses',  canActivate: [AuthGuard] ,component: ExpenseComponent},
-    {path: 'income',  component: IncomeComponent},
-    {path: 'expenses',  component: ExpenseComponent},
-    {path: 'history', component: HistoryComponent},
-    {path: 'login', component: LoginComponent},
+    {path: 'income',  canActivate: [AuthGuard] ,  component: IncomeComponent},
+    {path: 'expenses',  canActivate: [AuthGuard] ,  component: ExpenseComponent},
+    {path: 'history',  canActivate: [AuthGuard] , component: HistoryComponent},
+    {path: 'login', canActivate: [IsSignInGuard],component: LoginComponent},
+
     {path: 'edit/:id', canActivate: [AuthGuard] ,component: EditTableComponent},
     {
         path: 'categories',canActivate: [AuthGuard], component: CategoriesComponent, children: [

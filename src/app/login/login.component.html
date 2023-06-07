@@ -1,19 +1,49 @@
 
-<main class="form-signin">
-    <form  (ngSubmit)="onSubmit(ngFormRef)" #ngFormRef="ngForm">
-        <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" name="email" ngModel >
-            <label for="floatingInput">Email address</label>
+<!--<main class="form-signin">-->
+<!--    <form  (ngSubmit)="onSubmit(ngFormRef)" #ngFormRef="ngForm">-->
+<!--        <div class="form-floating">-->
+<!--            <input type="email" class="form-control" id="floatingInput" name="email" ngModel >-->
+<!--            <label for="floatingInput">Email address</label>-->
+<!--        </div>-->
+<!--        <div class="form-floating">-->
+<!--            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" ngModel>-->
+<!--            <label for="floatingPassword">Password</label>-->
+<!--        </div>-->
+<!--        <button class="w-100 btn btn-lg btn-primary" type="submit">-->
+<!--            {{ isLoginMode ? 'Login' : 'Sign Up' }}-->
+<!--        </button>-->
+<!--    </form>-->
+<!--    <button class="w-100 btn btn-lg btn-primary" type="button" (click)="onSwitchMode()">-->
+<!--        Switch to {{ isLoginMode ? 'Sign Up' : 'Login'}}-->
+<!--    </button>-->
+<!--</main>-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center text-dark mt-5">Login Daily Expense</h2>
+
+            <div class="card my-5">
+
+                <form class="card-body cardbody-color p-lg-5" (ngSubmit)="onSubmit(ngFormRef)" #ngFormRef="ngForm">
+
+                    <div class="text-center">
+                        <img src="" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                             width="200px" alt="profile" src="/assets/DE.png" alt="image">
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="floatingInput" name="email" ngModel
+                               placeholder="email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" class="form-control" placeholder="Password" name="password" ngModel>
+                    </div>
+                    <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100"> {{ isLoginMode ? 'Login' : 'Sign Up' }}</button></div>
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">{{ isLoginMode ? 'Not Registered' : 'Already Registered'}} <a (click)="onSwitchMode()" style="color: dodgerblue">  {{ isLoginMode ? 'Sign Up' : 'Login'}}</a>
+                    </div>
+                </form>
+            </div>
+
         </div>
-        <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" ngModel>
-            <label for="floatingPassword">Password</label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">
-            {{ isLoginMode ? 'Login' : 'Sign Up' }}
-        </button>
-    </form>
-    <button class="w-100 btn btn-lg btn-primary" type="button" (click)="onSwitchMode()">
-        Switch to {{ isLoginMode ? 'Sign Up' : 'Login'}}
-    </button>
-</main>
+    </div>
+</div>

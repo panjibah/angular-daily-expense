@@ -1,12 +1,13 @@
-<div class="container">
+<div class="">
     <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <div class="col-md-12">
             <nav class="navbar navbar-expand-lg bg-light">
                 <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="loggedin">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" aria-current="page" routerLink="/">Home</a>
+                                <a class="nav-link" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"
+                                   aria-current="page" routerLink="/">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" routerLinkActive="active" routerLink="/history">History</a>
@@ -20,18 +21,30 @@
                             <li class="nav-item">
                                 <a class="nav-link" routerLinkActive="active" routerLink="/categories">Categories</a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" routerLinkActive="active" routerLink="/">Report</a>
+                                <a class="nav-link" routerLinkActive="active" routerLink="/report">Report</a>
                             </li>
                         </ul>
                     </div>
-                    <button class="btn btn-primary">Logout</button>
+                    <div class="navbar__right">
+                        <div class="row">
+                            <div class="col-sm">
+                                <p> Welcome, {{userName}}</p>
+                            </div>
+                            <div class="col-sm">
+                                <app-logout></app-logout>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
                 </div>
             </nav>
         </div>
     </div>
+
     <router-outlet></router-outlet>
 </div>

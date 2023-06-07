@@ -1,50 +1,55 @@
-<app-edit-category [type] = 'incomeInput' ></app-edit-category>
-
 
 <div class="container">
+    <h1 class="income_title">Income Categories</h1>
+    <div class="component__wrapper">
+    <app-edit-category [type] = 'incomeInput' ></app-edit-category>
+    </div>
     <div class="income-categories__loading spinner-border" style="width: 6rem; height: 6rem;" role="status" *ngIf="isIncomeCategoryLoading"></div>
     <p *ngIf="isIncomeCategoryLoading">Loading ...</p>
     <p *ngIf="incomeCategory.length < 1 && isIncomeCategoryLoading">No category available!</p>
     <div class="income-categories" *ngIf="incomeCategory.length >=1 && !isIncomeCategoryLoading">
-        <h1>Income Categories</h1>
-        <table class="table">
+
+        <table class="table table__category">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">title</th>
-                <th scope="col">action</th>
+                <th scope="col" class="table__column-number">No.</th>
+                <th scope="col" class="table__column-category">Category Name</th>
+
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let cat of incomeCategory;let i= index">
                 <th scope="row">{{i+1}}</th>
                 <td>{{cat.name}}</td>
-                <td>{{cat.type}}</td>
+
             </tr>
             </tbody>
         </table>
     </div>
-
-    <app-edit-category [type] = 'expenseInput'></app-edit-category>
+    <div class="separator"></div>
+    <h1 class="expense_title">Expense Categories</h1>
     <div class="income-categories__loading spinner-border" style="width: 6rem; height: 6rem;" role="status" *ngIf="isExpenseCategoryLoading"></div>
+    <div class="component__wrapper">
+    <app-edit-category [type] = 'expenseInput'></app-edit-category>
+    </div>
     <p *ngIf="isExpenseCategoryLoading">Loading ...</p>
     <p *ngIf="expenseCategory.length < 1 && isExpenseCategoryLoading">No category available!</p>
     <div class="income-categories" *ngIf="expenseCategory.length >=1 && !isExpenseCategoryLoading">
     <div class="expense-categories">
-        <h1>Expense Categories</h1>
-        <table class="table">
+
+        <table class="table table__category" >
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">title</th>
-                <th scope="col">action</th>
+                <th scope="col" class="table__column-number">No.</th>
+                <th scope="col" class="table__column-category">Category Name</th>
+
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let cat of expenseCategory; let i= index">
                 <th scope="row">{{i+1}}</th>
                 <td>{{cat.name}}</td>
-                <td>{{cat.type}}</td>
+
             </tr>
             </tbody>
         </table>
@@ -52,4 +57,4 @@
 
 </div>
 <!--<router-outlet></router-outlet>-->
-{{expenseCategory | json}}
+<!--{{expenseCategory | json}}-->

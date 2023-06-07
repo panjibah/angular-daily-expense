@@ -123,4 +123,47 @@ export class AuthService {
         this.autoLogout(expiresIn * 1000);
         localStorage.setItem('userData', JSON.stringify(user));
     }
+
+    autoLogin(){
+        const userData: {
+            email: string,
+            id: string,
+            _token: string,
+            _tokenExpirationDate: string
+        } = JSON.parse(localStorage.getItem('userData'));
+
+        if(!userData){
+            return;
+        }
+
+        const loadedUser = new User(userData.email, userData.id
+            , userData._token, new Date(userData._tokenExpirationDate));
+
+        if(loadedUser.token){
+            this.userSubject.next(loadedUser);
+
+            const experationDuration = new Date(userData._tokenExpirationDate).getTime()
+                - new Date().getTime();
+            this.autoLogout(experationDuration);
+        }
+
+    }
+
+
+    loggedIn(){
+        const userData: {
+            email: string,
+            id: string,
+            _token: string,
+            _tokenExpirationDate: string
+        } = JSON.parse(localStorage.getItem('userData'));
+
+        if(!userData){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
 }
